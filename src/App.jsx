@@ -18,15 +18,24 @@ function App() {
   // }
 
 // ----------------------------------
-
-  let [value, updateIt] = useState(21);
+ 
+  // [can be any names used]
+  // value= original value/var to be updated
+  // updateIt = function name which is called/ref later to call it 
+  // 21 is inital value to be set- can be any like obj, string, "", function etc
+  let [value, updateIt] = useState(6);
 
   const add= () =>{
-    updateIt(value+1);
+    if(value<20){
+      updateIt(value+1);
+    }
   }
 
     const sub = () => {
-      updateIt(value - 1);
+      if(value>0)
+      {
+        updateIt(value - 1);
+      }
     };
 
   return (
