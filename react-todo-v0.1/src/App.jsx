@@ -9,9 +9,9 @@ function App() {
   const [count, setCount] = useState(0)
 
   const [data,setData] =useState([
-    // { srno: 1, topic: "some1 ", desc: "some 1 desc" },
-    // { srno: 2, topic: "some2 ", desc: "some 2 desc" },
-    // { srno: 3, topic: "some3 ", desc: "some 3 desc" },
+    { srno: 1, topic: "some1 ", desc: "some 1 desc" },
+    { srno: 2, topic: "some2 ", desc: "some 2 desc" },
+    { srno: 3, topic: "some3 ", desc: "some 3 desc" },
   ]);
 
   const addme=(topic,description)=>
@@ -42,14 +42,27 @@ function App() {
     // }
   }
 
+  const deleteData= (rowNum)=>
+  {
+    let filteredData= data.filter(
+        function(value)
+        {
+          return value.srno!== rowNum;
+        }
+    )
+    
+    setData(filteredData);
+
+  }
+
+  const[showTodo, setShowTodo] = useState(false);
+
   return (
     <>
       <div className="card mt-5">
-
-        <TodoTable todos={data} />
-        <button className='btn btn-primary' onClick={addme}>Add</button>
-        <CreateTodoTask addFun={addme}/>
-
+        <TodoTable todos={data} deleteCurrRow={deleteData}/>
+        <button className="btn btn-primary">Add</button>
+        <CreateTodoTask addFun={addme} />
       </div>
     </>
   );

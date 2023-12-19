@@ -19,6 +19,7 @@ function TodoTable(props){
                 srno={data.srno}
                 topic={data.topic}
                 desc={data.desc}
+                deleteRow={props.deleteCurrRow}
                 />
             ))}
 

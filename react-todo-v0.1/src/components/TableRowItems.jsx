@@ -2,7 +2,7 @@ function Table(props)
 {
     return (
       <>
-          <tr>
+          <tr onClick={()=>{props.deleteRow(props.srno)}}>
             <td>{props.srno}</td>
             <td>{props.topic}</td>
             <td>{props.desc}</td>
