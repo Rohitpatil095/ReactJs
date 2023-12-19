@@ -60,9 +60,15 @@ function App() {
   return (
     <>
       <div className="card mt-5">
-        <TodoTable todos={data} deleteCurrRow={deleteData}/>
-        <button className="btn btn-primary">Add</button>
-        <CreateTodoTask addFun={addme} />
+        <TodoTable todos={data} deleteCurrRow={deleteData} />
+        <button
+          className="btn btn-primary"
+          onClick={() => setShowTodo(!showTodo)}
+        >
+          {showTodo ? "Close New Todo" : "Create New Todo "}
+        </button>
+
+        {showTodo && <CreateTodoTask addFun={addme} />}
       </div>
     </>
   );
