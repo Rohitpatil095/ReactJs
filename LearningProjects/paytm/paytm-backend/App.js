@@ -1,22 +1,26 @@
 const { mongoConnect } = require("./config/database");
 const bodyParser = require("body-parser");
 const express = require("express");
+const cors= require("cors");
+const corsConfig=require("./config/cors");
+
 const PORT = process.env.APP_PORT || 3000;
 
-const home=require("./routes/home");
+const indexRouter=require("./routes/index");
+const usersRouter= require("./routes/users");
+
 
 async function main() {
   try {
     const app = express();
     // app.use()
-   await mongoConnect();
-
+    await mongoConnect();
+    
+    app.use(cors(corsConfig));
     app.use(bodyParser.json());
-    app.use("/", (req, res) => {
-      res.send("Started...");
-    });
-
-    app.use("/user",home);
+    
+    await app.use("/", indexRouter);
+    await app.use("/api/v1/", usersRouter);
 
     app.listen(PORT, () => {
       console.log("app started...");
