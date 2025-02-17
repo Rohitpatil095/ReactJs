@@ -8,7 +8,7 @@ const PORT = process.env.APP_PORT || 3000;
 
 const indexRouter=require("./routes/index");
 const usersRouter= require("./routes/users");
-
+const loginRouter=require("./routes/login");
 
 async function main() {
   try {
@@ -21,6 +21,7 @@ async function main() {
     
     await app.use("/", indexRouter);
     await app.use("/api/v1/", usersRouter);
+    await app.use("/api/v1/", loginRouter);
 
     app.listen(PORT, () => {
       console.log("app started...");

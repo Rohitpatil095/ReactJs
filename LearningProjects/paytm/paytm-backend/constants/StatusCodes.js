@@ -1,0 +1,2 @@
+exports.BAD_REQUEST=403;
+exports.AUTH_INVALID = 401;
